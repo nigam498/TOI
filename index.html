@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Open 5 Search Windows</title>
+    <title>HELO</title>
 </head>
 <body>
-    <button onclick="openSearch()">Open 5 Searches</button>
+    
 
     <script>
-    function openSearch() {
-        for (let i = 0; i < 5; i++) {
-            window.open('search-ms:displayname=SSS&crumb=location:%3A%3A{374DE290-123F-4565-9164-39C4925E467B}');
-        }
-    }
+    const forward = await fetch('blogger.com/u/1/blog/loading', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ source: 'my-page', payload: json })
+});
+
+const result = await forward.json();
+if (result && result.alert === 1) {
+  alert(1);
+}
     </script>
 </body>
 </html>
