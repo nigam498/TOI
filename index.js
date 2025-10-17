@@ -1,4 +1,4 @@
-"-prompt(8)-"
+<html>"-prompt(8)-"
 '-prompt(8)-'
 ";a=prompt,a()//
 ';a=prompt,a()//
@@ -6610,4 +6610,4 @@ feed:data:text/html,&#x3c;script>alert('Top Page Location: '+document.location+'
 <div style=xss:expressio\006e(alert(1))>
 <div style=xss:expressio\00006e(alert(1))>
 <div style=xss:expressio\6e(alert(1))>
-<div style=xss:expressio&#x5c;6e(alert(1))>
+<div style=xss:expressio&#x5c;6e(alert(1))></html>
