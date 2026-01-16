@@ -2,24 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Logo Test</title>
+  <title>Favicon Load Alert</title>
 </head>
 <body>
 
-<h2>My Website</h2>
+<h2>Dynamic Favicon Test</h2>
 
-<svg xmlns="http://www.w3.org/2000/svg"
-     width="200"
-     height="200"
-     onload="alert('⚠ Logo loaded on another website!')">
+<script>
+  // Create a canvas to draw favicon
+  const canvas = document.createElement("canvas");
+  canvas.width = 64;
+  canvas.height = 64;
 
-  <rect width="200" height="200" fill="#111"/>
-  <text x="50%" y="50%" text-anchor="middle"
-        fill="white" font-size="24" dy=".3em">
-    MY LOGO
-  </text>
+  const ctx = canvas.getContext("2d");
 
-</svg>
+  // Draw favicon content
+  ctx.fillStyle = "#ff0000";
+  ctx.fillRect(0, 0, 64, 64);
+
+  ctx.fillStyle = "#ffffff";
+  ctx.font = "32px Arial";
+  ctx.fillText("⚠", 16, 42);
+
+  // Convert canvas to favicon URL
+  const faviconURL = canvas.toDataURL("image/png");
+
+  // Create favicon link
+  const link = document.createElement("link");
+  link.rel = "icon";
+  link.type = "image/png";
+  link.href = faviconURL;
+
+  // Trigger alert when favicon loads
+  link.onload = function () {
+    alert("⚠ Favicon loaded via script!");
+  };
+
+  // Append favicon to <head>
+  document.head.appendChild(link);
+</script>
 
 </body>
 </html>
