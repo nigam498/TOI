@@ -1,46 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Favicon Load Alert</title>
-</head>
-<body>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="64"
+     height="64"
+     onload="
+       (function () {
+         try {
+           var ref = document.referrer || '';
+           var current = location.hostname;
 
-<h2>Dynamic Favicon Test</h2>
+           if (!current.includes('yourdomain.com')) {
+             alert('⚠ Favicon loaded from another domain!\n\nDomain: ' + current);
+           }
+         } catch (e) {}
+       })();
+     ">
 
-<script>
-  // Create a canvas to draw favicon
-  const canvas = document.createElement("canvas");
-  canvas.width = 64;
-  canvas.height = 64;
+  <rect width="64" height="64" fill="red"/>
+  <text x="16" y="42" font-size="32" fill="white">⚠</text>
 
-  const ctx = canvas.getContext("2d");
-
-  // Draw favicon content
-  ctx.fillStyle = "#ff0000";
-  ctx.fillRect(0, 0, 64, 64);
-
-  ctx.fillStyle = "#ffffff";
-  ctx.font = "32px Arial";
-  ctx.fillText("⚠", 16, 42);
-
-  // Convert canvas to favicon URL
-  const faviconURL = canvas.toDataURL("image/png");
-
-  // Create favicon link
-  const link = document.createElement("link");
-  link.rel = "icon";
-  link.type = "image/png";
-  link.href = faviconURL;
-
-  // Trigger alert when favicon loads
-  link.onload = function () {
-    alert("⚠ Favicon loaded via script!");
-  };
-
-  // Append favicon to <head>
-  document.head.appendChild(link);
-</script>
-
-</body>
-</html>
+</svg>
